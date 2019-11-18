@@ -8964,7 +8964,7 @@ Error message and password prompt
 <div created="20181201003618713" modified="20181202185134227" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20181201003616250" modified="20191111003302621" title="$:/state/sidebar">
+<div created="20181201003616250" modified="20191115082708054" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20181201010217610" modified="20181201010217610" title="$:/state/tab-1749438307">
@@ -8976,13 +8976,13 @@ Error message and password prompt
 <div created="20190114151712538" modified="20190123230507396" title="$:/state/toc/Contenidos-Instalar MySQL/MariaDB-1645261823">
 <pre>close</pre>
 </div>
-<div created="20181202180921602" modified="20190123230508670" title="$:/state/toc/Contenidos-phpMyAdmin-1645261823">
-<pre>close</pre>
+<div created="20181202180921602" modified="20191115075325008" title="$:/state/toc/Contenidos-phpMyAdmin-1645261823">
+<pre>open</pre>
 </div>
 <div created="20181202180725657" modified="20181202180725658" title="$:/state/toc/Contenidos-phpmyadmin-1645261823">
 <pre>open</pre>
 </div>
-<div list="Contenidos [[Instalar Apache y configurar el Firewall]]" title="$:/StoryList">
+<div list="Contenidos [[Instalación de phpMyAdmin]] [[Proceso acelerado de instalación]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -8998,7 +8998,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///home/pater/Dropbox/DWES/LAMP/LAMP.html&quot;
+            &quot;text&quot;: &quot;file:///home/mentecato/Dropbox/Apuntes/LAMP/LAMP.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9018,7 +9018,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/home/pater/Dropbox/DWES/LAMP/LAMP.html&quot;
+            &quot;text&quot;: &quot;/home/mentecato/Dropbox/Apuntes/LAMP/LAMP.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9407,7 +9407,7 @@ conceder privilegios al usuario en cuestión. En este caso se hace para `root`:
 <div created="20181201003206070" modified="20181213113327322" tags="" title="Contenidos" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;toc-selective-expandable Contenidos sort[orden]&gt;&gt;</pre>
 </div>
-<div created="20181202180602636" list="" modified="20181213113247945" orden="0701" tags="phpMyAdmin" title="Instalación de phpMyAdmin" type="text/x-markdown">
+<div created="20181202180602636" list="" modified="20191115082929080" orden="0701" tags="phpMyAdmin" title="Instalación de phpMyAdmin" type="text/x-markdown">
 <pre>Comenzamos, como de costumbre, con `apt`:
 
     sudo apt install phpmyadmin php-mbstring php-gettext
@@ -9418,6 +9418,14 @@ Esto le hará algunas preguntas para configurar su instalación correctamente.
 - Para la selección del servidor, elija `apache2`
 - Seleccione `Yes` cuando se le pregunte si desea usar `dbconfig-common` para configurar la base de datos
 - Luego se le pedirá que elija y confirme una **contraseña** de la aplicación **MySQL/MariaDB** para `phpMyAdmin`
+
+
+
+**Problemas de instalación en ubuntu 19.10**.- La versión 19.10 de ubuntu no cuenta, dentro de sus repositorios, con el paquete `phpmyadmin`. Para solucionar esta circunstancia necesitamos añadir un nuevo repositorio de tipo `ppa` con el comando: `apt-get-repository` el cual puede que tampoco esté instalado por defecto. Para salvar ambas circunstancias usaremos la secuencia de comandos:
+
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:phpmyadmin/ppa
+
 
 El proceso de instalación agrega el archivo de configuración phpMyAdmin Apache en el directorio `/etc/apache2/conf-enabled/`, desde donde se lee automáticamente. Lo único que debe hacer es habilitar explícitamente la extensión PHP de `mbstring`, lo que puede hacer escribiendo:
 
@@ -9801,7 +9809,7 @@ Fuente: [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-i
 
 </pre>
 </div>
-<div created="20181213113341250" modified="20190123230415801" orden="09" tags="Contenidos" title="Proceso acelerado de instalación" type="text/x-markdown">
+<div created="20181213113341250" modified="20191115075704263" orden="09" tags="Contenidos" title="Proceso acelerado de instalación" type="text/x-markdown">
 <pre>acelera = &quot;Nombre del contenedor&quot;
 
 #Crear máquina virtual
@@ -9865,7 +9873,7 @@ clave = 1234
     mysql&gt; USE mysql;
     mysql&gt; CREATE USER 'ubuntu'@'localhost' IDENTIFIED BY '1234';
     mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'ubuntu'@'localhost'; 
-    mysql&gt; UPDATE user SET plugin='mysql_native_password' WHERE User='YOURSYSTEM_USER';
+    mysql&gt; UPDATE user SET plugin='mysql_native_password' WHERE User='ubuntu';
     mysql&gt; FLUSH PRIVILEGES;
     mysql&gt; exit;
 
